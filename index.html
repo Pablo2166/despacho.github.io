@@ -358,7 +358,27 @@
         }
         
         function abrirAplicacion() {
-            window.location.href = GAS_URL;
+            // En lugar de redirigir, mostrar un iframe con la aplicación
+            mostrarIframeAplicacion();
+        }
+        
+        function mostrarIframeAplicacion() {
+            // Ocultar todos los contenedores actuales
+            document.getElementById('loadingScreen').classList.add('d-none');
+            document.getElementById('resetForm').classList.add('d-none');
+            document.getElementById('successScreen').classList.add('d-none');
+            document.getElementById('errorScreen').classList.add('d-none');
+            
+            // Crear y mostrar iframe
+            document.body.innerHTML = `
+                <iframe 
+                    src="${GAS_URL}" 
+                    width="100%" 
+                    height="100vh" 
+                    frameborder="0" 
+                    style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; border: none; overflow: hidden;">
+                </iframe>
+            `;
         }
     </script>
 </body>
